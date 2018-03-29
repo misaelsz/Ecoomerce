@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EcommerceOsorio.Models.ItemVenda>
+
+@{
+    ViewBag.Title = "CarrinhoDeCompras";
+    Layout = "~/Views/Shared/Template.cshtml";
+
+}
+
+<h2 style="margin-bottom:30px">Carrinho de Compras</h2>
+
+<table class="table table-striped table-hover">
+    <tr>
+        <th>
+            Imagem
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            Preço
+        </th>
+        <th>
+            Quantidade
+        </th>
+        <th>
+            Total
+        </th>
+        <th>
+            Remover
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <img src="~/Images/@item.ItemVendaProduto.ProdutoImagem"
+                     style="width:50px" />
+            </td>
+            <td>
+                @item.ItemVendaProduto.ProdutoNome
+            </td>
+            <td>
+                @item.ItemVendaValor.ToString("C2")
+            </td>
+            <td>
+                <div id="container" style="text-align:center">
+                    <div id="left" style="float:left">@Html.ActionLink("+", "AumentarQuantidadeItemVenda", "Home", new { id = item.ItemVendaId }, null)</div>
+                    <div id="right" style="margin:0 auto;display:inline-block">@item.ItemVendaQuantidade</div>
+                    <div id="center" style="float:right">@Html.ActionLink("-", "DiminuirQuantidadeItemVenda", "Home", new { id = item.ItemVendaId }, null)</div>
+                </div>
+            </td>
+            <td>
+                @{
+                    double valor = item.ItemVendaValor * item.ItemVendaQuantidade;
+                }
+                @valor.ToString("C2")
+            </td>
+            <td>
+                @Html.ActionLink("Remover", "RemoverItemCarrinho", "Home", new { id = item.ItemVendaId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+                    }
+
+</table>
+
+<div class="btn btn-outline-success">Total: @ViewBag.Total</div>

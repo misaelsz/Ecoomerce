@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EcommerceOsorio.Models.Categoria>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Template.cshtml";
+}
+
+<h2>Gerenciar Categorias</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar Categoria", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriaNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriaDescricao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaNome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoriaDescricao)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", "Categorias", 
+                new { id = item.CategoriaId }, null) |
+            
+            @Html.ActionLink("Detalhes", "Details", "Categorias",
+                new { id=item.CategoriaId }, null) |
+
+            @Html.ActionLink("Apagar", "Delete", "Categorias",
+                new { id=item.CategoriaId }, null)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+@{ 
+    string itens = "";
+    if (HttpContext.Current.Session["QuantidadeItens"] != null) {
+        itens = HttpContext.Current.Session["QuantidadeItens"].ToString();
+    }
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        @Html.ActionLink("Ecommerce", "Index", "Home", new { id = 0 }, new { @class = "navbar-brand" })
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                @*<li class="nav-item">
+                    @Html.ActionLink("Cadastrar", "CadastrarPessoa",
+                   "Home", new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Listar", "ListarPessoas",
+                   "Home", new { @class = "nav-link" })
+                </li>*@
+            </ul>
+            <div class="form-inline my-2 my-lg-0">
+                @Html.ActionLink("Carrinho - " + itens, "CarrinhoDeCompras", "Home", new { id = 0 }, new { @class = "btn btn-secondary my-2 my-sm-0" })
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top:50px;margin-bottom:50px">
+        @RenderBody()
+    </div>
+
+    <hr />
+    <footer style="text-align:center">
+        <p>
+            &copy; @DateTime.Now.Year - Desenvolvido por Diogo Deconto
+        </p>
+    </footer>
+</body>
+</html>

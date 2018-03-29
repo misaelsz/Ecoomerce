@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EcommerceOsorio.Models.Produto>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Template.cshtml";
+}
+
+<h2>Gerenciar Produtos</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar Produto", "Create", "Produtos")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdutoNome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdutoDescricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdutoQuantidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdutoPreco)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdutoImagem)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoDescricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoQuantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoPreco)
+            </td>
+            <td>
+                <img src="~/Images/@item.ProdutoImagem"
+                     style="width:75px;height:50px" />
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", "Produtos", new { id = item.ProdutoId }, null) |
+                @Html.ActionLink("Detalhes", "Details", "Produtos", new { id = item.ProdutoId }, null) |
+                @Html.ActionLink("Apagar", "Delete", "Produtos", new { id = item.ProdutoId }, null)
+            </td>
+        </tr>
+    }
+
+</table>

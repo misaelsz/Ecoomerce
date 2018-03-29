@@ -1,0 +1,35 @@
+﻿@model EcommerceOsorio.Models.Categoria
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Template.cshtml";
+}
+
+<h2>Detalhes da Categoria</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoriaNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoriaNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoriaDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoriaDescricao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", "Categorias",
+        new { id = Model.CategoriaId }, null) |
+    @Html.ActionLink("Voltar para lista", "Index", "Categorias")
+</p>

@@ -1,0 +1,30 @@
+﻿@model EcommerceOsorio.Models.Produto
+
+@{
+    ViewBag.Title = "DetalheProduto";
+    Layout = "~/Views/Shared/Template.cshtml";
+}
+
+<h2>Detalhe do Produto</h2>
+
+<table style="margin-left: 30px">
+    <tr>
+        <td>
+            <img src="~/Images/@Model.ProdutoImagem"
+                 style="border: solid; height: 300px" />
+        </td>
+        <td style="vertical-align: top; padding-left: 30px">
+            <b>Descrição: </b>
+            <br />
+            @Model.ProdutoDescricao<br />
+            <b>Preço: </b>@Model.ProdutoPreco.ToString("C2")<br />
+            <b>Quantidade em estoque: </b>@Model.ProdutoQuantidade<br />
+            <br />
+            @Html.ActionLink("Adicionar", "AdicionarAoCarrinho", "Home",
+                    new { id = Model.ProdutoId }, new { @class = "btn btn-primary" })
+        </td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink("Voltar", "Index", "Home")
+</p>

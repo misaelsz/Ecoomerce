@@ -1,0 +1,50 @@
+﻿@model EcommerceOsorio.Models.Produto
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Template.cshtml";
+}
+
+<h2>Detalhes do Produto</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdutoNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdutoNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdutoDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdutoDescricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdutoQuantidade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdutoQuantidade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdutoPreco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdutoPreco)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", "Produtos", new { id = Model.ProdutoId }, null) |
+    @Html.ActionLink("Voltar para lista", "Index", "Produtos")
+</p>

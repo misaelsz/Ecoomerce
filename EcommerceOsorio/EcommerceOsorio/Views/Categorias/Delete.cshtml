@@ -1,0 +1,40 @@
+﻿@model EcommerceOsorio.Models.Categoria
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Template.cshtml";
+}
+
+<h2>Deletar Categoria</h2>
+
+<h3>Tem certeza que deseja apagar essa categoria?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoriaNome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoriaNome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoriaDescricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoriaDescricao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Apagar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para lista", "Index", "Categorias")
+        </div>
+    }
+</div>
